@@ -3,6 +3,7 @@
 Official documentation, video demonstrations, and NCRB fire casualty analysis reports for **AgniNode: Autonomous Fire Detection & Suppression System**.
 
 ## 🚀 Live Portal & Scanner Link
+
 **Public URL:** [https://avishkarranjane.github.io/agninode-docs/](https://avishkarranjane.github.io/agninode-docs/)
 
 Scan any of the provided QR codes in `assets/qr/` (`AgniNode_QR_Public.png`, `AgniNode_QR_Clean.png`, or `AgniNode_Scan_Card.png`) with any smartphone camera (iPhone Camera, Android, Google Lens, or WhatsApp scanner) to open the portal and access:
@@ -17,7 +18,7 @@ Scan any of the provided QR codes in `assets/qr/` (`AgniNode_QR_Public.png`, `Ag
 
 ## 📁 Clean Project Architecture
 
-```
+```text
 AgniNode Document/
 ├── assets/
 │   ├── videos/             # Field test videos & poster thumbnails
@@ -50,6 +51,7 @@ AgniNode Document/
 ---
 
 ## ⚡ Video Playback & Mobile Compatibility
+
 - Both MP4 files have been re-indexed with **FastStart (`moov` atom at file beginning)** for instantaneous streaming without buffering delays.
 - Videos are formatted in universal **H.264 video + AAC audio** with `playsinline` support for native mobile playback on iOS Safari, Android Chrome, and Samsung Internet.
 - PDF documents include 1-tap direct reader links, native mobile viewing, and local download options.
