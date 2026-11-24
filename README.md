@@ -5,28 +5,47 @@ Official documentation, video demonstrations, and NCRB fire casualty analysis re
 ## 🚀 Live Portal & Scanner Link
 **Public URL:** [https://avishkarranjane.github.io/agninode-docs/](https://avishkarranjane.github.io/agninode-docs/)
 
-Scan any of the provided QR codes (`AgniNode_QR_Public.png`, `AgniNode_QR_Clean.png`, or `AgniNode_Scan_Card.png`) with any smartphone camera (iPhone Camera, Android, Google Lens, or WhatsApp scanner) to open the portal and instantly access:
+Scan any of the provided QR codes in `assets/qr/` (`AgniNode_QR_Public.png`, `AgniNode_QR_Clean.png`, or `AgniNode_Scan_Card.png`) with any smartphone camera (iPhone Camera, Android, Google Lens, or WhatsApp scanner) to open the portal and access:
 
-1. **AgniNode Working Demonstration** (Full HD 1080p MP4 Video - 01:00 min) — End-to-end hardware workflow showing automated sensor detection, buzzer relay, and autonomous suppression sequence.
-2. **Aerosol Module Working Test** (1080p MP4 High-Speed Video - 00:11 sec) — Rapid condensed aerosol discharge envelope test demonstrating microsecond flame reaction disruption.
-3. **NCRB Deaths due to Accidental Fire in India (2021-2025)** (Official PDF Report) — National mortality breakdown and structural fire risk factors.
-4. **NCRB Deaths due to Electrical Short Circuit Fires in India (2021-2025)** (Official PDF Report) — Empirical analysis of electrical short circuits as the primary source of urban fire fatalities.
-5. **Reducing Electrical Fire Deaths in India: Components and Evidence** (Engineering Validation Paper) — Component-level engineering evidence proving how sub-second localized suppression eliminates flashover risk.
+1. **AgniNode Working Demonstration** (`assets/videos/agninode-working.mp4` - 01:00 min) — End-to-end hardware workflow showing automated sensor detection, buzzer relay, and autonomous suppression sequence.
+2. **Aerosol Module Working Test** (`assets/videos/aerosol-module-working.mp4` - 00:11 sec) — Rapid condensed aerosol discharge envelope test demonstrating microsecond flame reaction disruption.
+3. **NCRB Deaths due to Accidental Fire in India (2021-2025)** (`assets/docs/ncrb-accidental-fire-deaths.pdf`) — National mortality breakdown and structural fire risk factors.
+4. **NCRB Deaths due to Electrical Short Circuit Fires in India (2021-2025)** (`assets/docs/ncrb-electrical-short-circuit-fires.pdf`) — Empirical analysis of electrical short circuits as the primary source of urban fire fatalities.
+5. **Reducing Electrical Fire Deaths in India: Components and Evidence** (`assets/docs/reducing-electrical-fire-deaths.pdf`) — Component-level engineering evidence proving how sub-second localized suppression eliminates flashover risk.
 
 ---
 
-## 📱 Scanner & Verification Files Included
+## 📁 Clean Project Architecture
 
-| File | Description | Usage |
-|---|---|---|
-| `AgniNode_Scan_Card.png` | Branded High-Resolution Presentation Placard (Dark Mode) | Display on iPad, monitor, or print for exhibition stands |
-| `AgniNode_Scan_Card_Light.png` | Print-Ready Placard (White Background) | Standard color or black & white printer |
-| `AgniNode_QR_Public.png` | High-Resolution Branded QR Code (Ember Flame Center) | General scanning & digital presentation |
-| `AgniNode_QR_Clean.png` | 100% High-Contrast Standard B&W QR Code | Instantaneous zero-lag scan on any budget or low-light phone |
-| `AgniNode_QR_Public.svg` | Scalable Vector Graphic (SVG) | Infinite-zoom printing on banners or large posters |
-| `print-qr.html` | Interactive Printable A4 Sheet | 1-click browser printing for standees or sticker sheets |
-| `AgniNode_QR_Local_WiFi.png` | Local Offline Wi-Fi Scanner | For offline demonstrations without internet |
-| `start_local_server.bat` | Offline Wi-Fi Local Server | 1-click startup on `http://localhost:8080` or local Wi-Fi |
+```
+AgniNode Document/
+├── assets/
+│   ├── videos/             # Field test videos & poster thumbnails
+│   │   ├── agninode-working.mp4
+│   │   ├── aerosol-module-working.mp4
+│   │   ├── poster-agninode.jpg
+│   │   └── poster-aerosol.jpg
+│   ├── docs/               # Official NCRB & technical research PDFs
+│   │   ├── ncrb-accidental-fire-deaths.pdf
+│   │   ├── ncrb-electrical-short-circuit-fires.pdf
+│   │   └── reducing-electrical-fire-deaths.pdf
+│   └── qr/                 # High-resolution scannable QR codes & placards
+│       ├── AgniNode_QR_Public.png
+│       ├── AgniNode_QR_Clean.png
+│       ├── AgniNode_QR_Public.svg
+│       ├── AgniNode_Scan_Card.png
+│       ├── AgniNode_Scan_Card_Light.png
+│       ├── AgniNode_QR_Local_WiFi.png
+│       └── AgniNode_Scan_Card_Local_WiFi.png
+├── index.html              # Main web portal
+├── print-qr.html           # A4 printable placard & stickers
+├── generate_qr_codes.py    # Python script for generating QR codes
+├── server.py               # Local offline Wi-Fi streaming server
+├── start_local_server.bat  # 1-click local server startup
+├── README.md               # Project documentation
+├── .gitignore              # Ignores __pycache__ and temp files
+└── .nojekyll               # GitHub Pages static asset bypass
+```
 
 ---
 

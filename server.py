@@ -105,7 +105,7 @@ if __name__ == '__main__':
     print(f" Local URL (This PC) : http://localhost:{port}/")
     print(f" Mobile / Wi-Fi URL  : http://{local_ip}:{port}/")
     print("=" * 60)
-    print(" Any phone on the same Wi-Fi can scan AgniNode_QR_Local_WiFi.png")
+    print(" Any phone on the same Wi-Fi can scan assets/qr/AgniNode_QR_Local_WiFi.png")
     print(" Press Ctrl+C to stop.")
     print("=" * 60)
 

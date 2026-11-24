@@ -234,26 +234,28 @@ if __name__ == "__main__":
     print(f"Local Offline URL : {local_url}")
     print("=" * 60)
 
+    os.makedirs("assets/qr", exist_ok=True)
+
     # 1. Clean Black & White QR (Highest possible scanability)
-    generate_clean_qr(public_url, "AgniNode_QR_Clean.png")
+    generate_clean_qr(public_url, "assets/qr/AgniNode_QR_Clean.png")
 
     # 2. Branded QR Code
-    pub_qr = generate_branded_qr(public_url, "AgniNode_QR_Public.png")
+    pub_qr = generate_branded_qr(public_url, "assets/qr/AgniNode_QR_Public.png")
 
     # 3. Dark Presentation Placard
-    generate_presentation_card_dark(pub_qr, public_url, "AgniNode_Scan_Card.png")
+    generate_presentation_card_dark(pub_qr, public_url, "assets/qr/AgniNode_Scan_Card.png")
 
     # 4. Light Printable Placard
-    generate_presentation_card_light(pub_qr, public_url, "AgniNode_Scan_Card_Light.png")
+    generate_presentation_card_light(pub_qr, public_url, "assets/qr/AgniNode_Scan_Card_Light.png")
 
     # 5. Local Offline Wi-Fi QR & Placard
-    loc_qr = generate_branded_qr(local_url, "AgniNode_QR_Local_WiFi.png")
-    generate_presentation_card_dark(loc_qr, local_url, "AgniNode_Scan_Card_Local_WiFi.png")
+    loc_qr = generate_branded_qr(local_url, "assets/qr/AgniNode_QR_Local_WiFi.png")
+    generate_presentation_card_dark(loc_qr, local_url, "assets/qr/AgniNode_Scan_Card_Local_WiFi.png")
 
     # 6. Scalable Vector Graphic (SVG)
     import qrcode.image.svg
     svg_factory = qrcode.image.svg.SvgPathImage
     svg_qr = qrcode.make(public_url, image_factory=svg_factory)
-    svg_qr.save("AgniNode_QR_Public.svg")
-    print("Generated SVG: AgniNode_QR_Public.svg")
+    svg_qr.save("assets/qr/AgniNode_QR_Public.svg")
+    print("Generated SVG: assets/qr/AgniNode_QR_Public.svg")
     print("All scanners generated successfully!")
