@@ -1,10 +1,11 @@
 import os
 import sys
 import socket
+import shutil
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 class RangeRequestHandler(SimpleHTTPRequestHandler):
-    """HTTP Request Handler with support for Range requests (essential for iOS/Android video seeking)."""
+    """HTTP Request Handler with full Range request support (essential for iOS/Android video seeking)."""
     
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -14,6 +15,7 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
     def send_head(self):
         path = self.translate_path(self.path)
         if not os.path.exists(path) or os.path.isdir(path):
+            self.range = None
             return super().send_head()
 
         ctype = self.guess_type(path)
@@ -28,6 +30,7 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
 
         range_header = self.headers.get('Range')
         if not range_header or not range_header.startswith('bytes='):
+            self.range = None
             self.send_response(200)
             self.send_header("Content-Type", ctype)
             self.send_header("Content-Length", str(size))
@@ -49,6 +52,8 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
             return None
 
         length = end - start + 1
+        self.range = (start, length)
+
         self.send_response(206)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
@@ -58,6 +63,26 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
 
         f.seek(start)
         return f
+
+    def copyfile(self, source, outputfile):
+        if hasattr(self, 'range') and self.range:
+            start, length = self.range
+            remaining = length
+            buf_size = 64 * 1024
+            while remaining > 0:
+                chunk = source.read(min(remaining, buf_size))
+                if not chunk:
+                    break
+                try:
+                    outputfile.write(chunk)
+                except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+                    break
+                remaining -= len(chunk)
+        else:
+            try:
+                shutil.copyfileobj(source, outputfile)
+            except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+                pass
 
 def get_local_ip():
     try:
