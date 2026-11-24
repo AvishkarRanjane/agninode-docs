@@ -2,41 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>AgniNode | Smart Fire Suppression & Evidence Archive</title>
-  <meta name="description" content="Official documentation, live field-test footage, aerosol canister suppression demonstrations, and NCRB casualty reduction research reports for AgniNode.">
-  <meta name="theme-color" content="#0b0f19">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>AgniNode | Official Documentation & Field Demonstrations</title>
+  <meta name="description" content="Official documentation, field demonstration videos, aerosol suppression tests, and NCRB fire casualty reports for AgniNode Autonomous Fire Suppression System.">
+  <meta name="theme-color" content="#070a13">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- OpenGraph Metadata -->
-  <meta property="og:title" content="AgniNode - Smart Fire Suppression Documentation">
-  <meta property="og:description" content="Access live field videos, aerosol canister tests, and research documents instantly.">
+  <!-- OpenGraph Metadata for Social Sharing -->
+  <meta property="og:title" content="AgniNode - Documentation & Field Video Portal">
+  <meta property="og:description" content="Instant access to field demonstration videos, aerosol module tests, and NCRB fire casualty analysis papers.">
   <meta property="og:image" content="poster-agninode.jpg">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- QR Scanner Engine -->
+  <!-- HTML5 QR Code Scanner Library -->
   <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(17, 24, 39, 0.75);
+      --bg: #070a13;
+      --card-bg: rgba(15, 23, 42, 0.85);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover: rgba(255, 255, 255, 0.14);
+      --card-hover: rgba(249, 115, 22, 0.3);
       --primary: #f97316;
-      --primary-glow: rgba(249, 115, 22, 0.35);
-      --primary-dark: #ea580c;
-      --accent: #ef4444;
+      --primary-hover: #ea580c;
+      --primary-glow: rgba(249, 115, 22, 0.4);
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --border: rgba(255, 255, 255, 0.1);
-      --radius: 16px;
-      --radius-sm: 10px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
     }
 
     * {
@@ -49,42 +53,41 @@
     body {
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(234, 88, 12, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(239, 68, 68, 0.1) 0%, transparent 40%),
-        linear-gradient(to bottom, #090d16, #0d1321);
+        radial-gradient(circle at 15% 15%, rgba(249, 115, 22, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(239, 68, 68, 0.12) 0%, transparent 45%),
+        linear-gradient(to bottom, #070a13, #0b1120 50%, #070a13 100%);
       color: var(--text);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    /* Container */
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 18px;
     }
 
-    /* Header */
+    /* Top Sticky Navigation */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(9, 13, 22, 0.85);
+      z-index: 60;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(7, 10, 19, 0.88);
       border-bottom: 1px solid var(--border);
-      padding: 14px 0;
+      padding: 12px 0;
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
     }
 
     .brand {
@@ -96,34 +99,36 @@
     }
 
     .brand-icon {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       background: linear-gradient(135deg, #f97316, #ef4444);
       border-radius: 12px;
       display: grid;
       place-items: center;
-      box-shadow: 0 4px 16px var(--primary-glow);
+      box-shadow: 0 4px 18px var(--primary-glow);
+      flex-shrink: 0;
     }
 
     .brand-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       fill: #ffffff;
     }
 
     .brand-text h1 {
-      font-size: 1.25rem;
+      font-size: 1.28rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(to right, #fff, #fdba74);
+      background: linear-gradient(to right, #ffffff, #fed7aa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
 
     .brand-text p {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -131,34 +136,38 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 9px 16px;
+      gap: 7px;
+      padding: 8px 14px;
       border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       border: none;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       white-space: nowrap;
+      min-height: 38px;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #fff;
+      color: #ffffff;
       box-shadow: 0 4px 14px var(--primary-glow);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover, .btn-primary:active {
       background: linear-gradient(135deg, #fb923c, #f97316);
       transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
     }
 
     .btn-outline {
@@ -167,14 +176,24 @@
       border: 1px solid var(--border);
     }
 
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+    .btn-outline:hover, .btn-outline:active {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
-    /* Hero Section */
+    .btn-accent {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .btn-accent:hover {
+      background: rgba(239, 68, 68, 0.25);
+    }
+
+    /* Hero */
     .hero {
-      padding: 36px 0 24px;
+      padding: 32px 0 20px;
       text-align: center;
     }
 
@@ -182,14 +201,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
       border-radius: 9999px;
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       color: #34d399;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .pulse-dot {
@@ -203,29 +222,30 @@
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
+      50% { opacity: 0.4; transform: scale(0.8); }
     }
 
     .hero-title {
-      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.15;
+      line-height: 1.18;
       margin-bottom: 12px;
+      color: #ffffff;
     }
 
     .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-size: clamp(0.92rem, 2vw, 1.05rem);
       color: var(--text-muted);
       max-width: 680px;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
     }
 
-    .stat-row {
+    .stats-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 24px;
     }
@@ -233,10 +253,10 @@
     .stat-chip {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.03);
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 9999px;
       font-size: 0.82rem;
       color: var(--text-muted);
@@ -246,18 +266,19 @@
       color: var(--primary);
     }
 
-    /* Filter Tabs & Search */
+    /* Controls Bar: Filters + Search */
     .controls-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 28px;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 14px;
+      background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(12px);
     }
 
     .tabs {
@@ -274,9 +295,9 @@
     }
 
     .tab-btn {
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: var(--radius-sm);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 600;
       background: transparent;
       color: var(--text-muted);
@@ -287,32 +308,34 @@
     }
 
     .tab-btn.active {
-      background: rgba(249, 115, 22, 0.15);
-      color: #fff;
-      border-color: rgba(249, 115, 22, 0.4);
+      background: rgba(249, 115, 22, 0.16);
+      color: #ffffff;
+      border-color: rgba(249, 115, 22, 0.45);
     }
 
     .tab-btn:hover:not(.active) {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .search-box {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(7, 10, 19, 0.7);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 6px 12px;
       min-width: 220px;
+      flex: 1;
+      max-width: 320px;
     }
 
     .search-box input {
       background: transparent;
       border: none;
-      color: #fff;
-      font-size: 0.85rem;
+      color: #ffffff;
+      font-size: 0.84rem;
       width: 100%;
       outline: none;
     }
@@ -321,14 +344,23 @@
       color: var(--text-dim);
     }
 
-    /* Grid layout */
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
     .section-title {
       font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 16px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 10px;
+      color: #ffffff;
     }
 
     .section-title svg {
@@ -337,18 +369,27 @@
       fill: var(--primary);
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 22px;
-      margin-bottom: 40px;
+    .section-count {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 3px 9px;
+      border-radius: 9999px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Cards */
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 38px;
+    }
+
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -357,60 +398,151 @@
     }
 
     .card:hover {
-      transform: translateY(-3px);
       border-color: var(--card-hover);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+      transform: translateY(-2px);
     }
 
-    /* Video Card Specific */
-    .video-wrapper {
+    /* Video Player Container - Adaptive Portrait/Mobile Fit */
+    .video-container {
       position: relative;
       width: 100%;
-      background: #000;
-      aspect-ratio: 16 / 9;
+      background: #000000;
+      height: 380px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
 
-    .video-wrapper video {
+    .video-container video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #000000;
       display: block;
     }
 
-    .video-badge {
+    /* Play overlay button */
+    .play-overlay {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.7);
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+      z-index: 5;
+    }
+
+    .play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .play-btn-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(249, 115, 22, 0.9);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 24px rgba(249, 115, 22, 0.6);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .play-btn-circle:hover {
+      transform: scale(1.1);
+      background: #ea580c;
+    }
+
+    .play-btn-circle svg {
+      width: 28px;
+      height: 28px;
+      fill: #ffffff;
+      margin-left: 3px;
+    }
+
+    .badge-top-left {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(8px);
       padding: 4px 10px;
       border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ffffff;
       display: flex;
       align-items: center;
       gap: 6px;
+      z-index: 6;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .duration-badge {
+    .badge-bottom-right {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.8);
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.85);
       padding: 3px 8px;
       border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #ffffff;
+      z-index: 6;
     }
 
+    /* PDF Preview Box */
+    .pdf-header-preview {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.98));
+      padding: 26px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .pdf-icon-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pdf-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .pdf-icon-box svg {
+      width: 26px;
+      height: 26px;
+      fill: #ef4444;
+    }
+
+    .pdf-meta-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Card Content */
     .card-body {
-      padding: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -419,48 +551,79 @@
     .tag-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      margin-bottom: 10px;
     }
 
     .tag {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.72rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       padding: 3px 8px;
       border-radius: 4px;
     }
 
     .tag-video {
-      background: rgba(249, 115, 22, 0.15);
+      background: rgba(249, 115, 22, 0.18);
       color: #f97316;
+      border: 1px solid rgba(249, 115, 22, 0.3);
     }
 
     .tag-pdf {
-      background: rgba(239, 68, 68, 0.15);
-      color: #ef4444;
+      background: rgba(239, 68, 68, 0.16);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
     .file-size {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: var(--text-dim);
       font-family: 'JetBrains Mono', monospace;
     }
 
     .card-title {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       line-height: 1.35;
-      margin-bottom: 8px;
-      color: #fff;
+      margin-bottom: 10px;
+      color: #ffffff;
     }
 
     .card-desc {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       margin-bottom: 16px;
-      flex: 1;
+      line-height: 1.5;
+    }
+
+    /* Highlights / Evidence Points */
+    .evidence-list {
+      list-style: none;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .evidence-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .evidence-list li svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .card-actions {
@@ -468,86 +631,53 @@
       align-items: center;
       gap: 8px;
       margin-top: auto;
+      flex-wrap: wrap;
     }
 
-    .btn-action {
+    .card-actions .btn {
       flex: 1;
-      padding: 9px 12px;
-      font-size: 0.8rem;
+      min-width: 120px;
     }
 
-    /* PDF Icon preview */
-    .pdf-preview {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-
-    .pdf-preview svg {
-      width: 48px;
-      height: 48px;
-      fill: #ef4444;
-      filter: drop-shadow(0 4px 12px rgba(239, 68, 68, 0.3));
-    }
-
-    .pdf-preview span {
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--text-muted);
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    /* Scanner Tab Container */
-    .scanner-view {
+    /* Camera Scanner Section */
+    .camera-box {
       display: none;
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
+      border: 2px dashed rgba(249, 115, 22, 0.5);
+      border-radius: var(--radius-lg);
       padding: 24px;
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 40px;
+      max-width: 580px;
+      margin: 0 auto 36px;
     }
 
-    .scanner-view.active {
+    .camera-box.active {
       display: block;
     }
 
     #qr-reader {
       width: 100%;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       overflow: hidden;
       margin: 16px auto;
-      border: 2px dashed rgba(249, 115, 22, 0.5) !important;
+      border: none !important;
     }
 
-    #qr-reader__scan_region video {
-      border-radius: var(--radius-sm);
-    }
-
-    .scan-result {
-      margin-top: 16px;
+    .scan-result-card {
+      margin-top: 14px;
       padding: 14px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       border-radius: var(--radius-sm);
       display: none;
     }
 
-    /* Modal Viewer */
+    /* Fullscreen Modals */
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
       z-index: 100;
       display: none;
       align-items: center;
@@ -559,17 +689,17 @@
       display: flex;
     }
 
-    .modal-content {
-      background: #0f172a;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
+    .modal-box {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
       width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
+      max-width: 920px;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
     }
 
     .modal-header {
@@ -579,12 +709,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
     }
 
     .modal-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #fff;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .modal-close {
@@ -592,9 +726,13 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       line-height: 1;
       padding: 4px;
+    }
+
+    .modal-close:hover {
+      color: #ffffff;
     }
 
     .modal-body {
@@ -602,50 +740,79 @@
       overflow: auto;
       padding: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #000;
+      background: #000000;
       min-height: 400px;
+      position: relative;
     }
 
     .modal-body iframe {
       width: 100%;
-      height: 70vh;
+      height: 72vh;
       border: none;
     }
 
     /* QR Code Display Modal */
-    .qr-modal-body {
+    .qr-modal-content {
       background: #0b0f19;
-      padding: 30px;
+      padding: 28px 24px;
       text-align: center;
     }
 
-    .qr-card-preview {
-      max-width: 320px;
-      width: 100%;
-      margin: 0 auto 20px;
+    .qr-preview-box {
+      max-width: 290px;
+      margin: 0 auto 18px;
+      background: #ffffff;
+      padding: 16px;
       border-radius: 16px;
-      border: 2px solid var(--primary);
-      box-shadow: 0 8px 30px var(--primary-glow);
-      background: #fff;
-      padding: 12px;
+      border: 3px solid var(--primary);
+      box-shadow: 0 8px 32px var(--primary-glow);
     }
 
-    .qr-card-preview img {
+    .qr-preview-box img {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid var(--primary);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
     /* Footer */
     footer {
       margin-top: auto;
       border-top: 1px solid var(--border);
-      background: rgba(9, 13, 22, 0.95);
-      padding: 24px 0;
+      background: rgba(7, 10, 19, 0.95);
+      padding: 26px 0;
       text-align: center;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-dim);
     }
 
@@ -654,7 +821,7 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
@@ -668,34 +835,37 @@
       color: var(--primary);
     }
 
-    /* Responsive */
+    /* Mobile adjustments */
     @media (max-width: 640px) {
+      .video-container {
+        height: 320px;
+      }
       .grid {
         grid-template-columns: 1fr;
       }
+      .hero-title {
+        font-size: 1.65rem;
+      }
       .brand-text h1 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
       }
       .btn {
-        padding: 8px 12px;
-        font-size: 0.78rem;
-      }
-      .stat-row {
-        gap: 10px;
+        padding: 7px 12px;
+        font-size: 0.8rem;
       }
       .controls-bar {
         flex-direction: column;
         align-items: stretch;
       }
       .search-box {
-        width: 100%;
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navbar -->
+  <!-- Top Sticky Navigation Bar -->
   <header>
     <div class="container">
       <div class="nav-inner">
@@ -705,30 +875,30 @@
           </div>
           <div class="brand-text">
             <h1>AgniNode</h1>
-            <p>Smart Fire Suppression Portal</p>
+            <p>Fire Suppression Archive</p>
           </div>
         </a>
 
         <div class="nav-actions">
-          <button class="btn btn-outline" onclick="openQrModal()">
+          <button class="btn btn-outline" onclick="openQrModal()" title="Show Scanner QR Code">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h6v6H4V4zm2 2v2h2V6H6zm8-2h6v6h-6V4zm2 2v2h2V6h-2zM4 14h6v6H4v-6zm2 2v2h2v-2H6zm10-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2zm0 4h2v2h-2v-2zM14 18h2v2h-2v-2z"/></svg>
-            <span>Scanner QR</span>
+            <span>Scan QR</span>
           </button>
-          <a href="print-qr.html" target="_blank" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-            <span>Print Sticker</span>
-          </a>
+          <button class="btn btn-primary" onclick="sharePortal()" title="Share Portal Link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span>Share</span>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Header -->
   <section class="hero">
     <div class="container">
       <div class="status-badge">
         <span class="pulse-dot"></span>
-        <span>Hardware Demos & Incident Research Archive Verified</span>
+        <span>Hardware Demos & Research Archive Verified</span>
       </div>
 
       <h2 class="hero-title">AgniNode Documentation & Field Tests</h2>
@@ -736,97 +906,120 @@
         Instant access to live aerosol canister suppression footage, hardware workflow demonstrations, and NCRB electrical fire casualty analyses.
       </p>
 
-      <div class="stat-row">
+      <div class="stats-row">
         <div class="stat-chip">
-          <strong>2</strong> Field Test Videos
+          <strong>2</strong> Field Videos (1080p)
         </div>
         <div class="stat-chip">
-          <strong>3</strong> NCRB & Evidence Reports
+          <strong>3</strong> NCRB Research Papers
         </div>
         <div class="stat-chip">
-          <strong>100%</strong> Zero-Lag Web Playback
+          <strong>FastStart</strong> Smooth Mobile Playback
         </div>
       </div>
 
-      <!-- Controls & Filter Tabs -->
+      <!-- Controls & Filter Bar -->
       <div class="controls-bar">
         <div class="tabs">
           <button class="tab-btn active" onclick="filterCategory('all', this)">All Files (5)</button>
           <button class="tab-btn" onclick="filterCategory('video', this)">Field Videos (2)</button>
-          <button class="tab-btn" onclick="filterCategory('pdf', this)">NCRB & Research (3)</button>
+          <button class="tab-btn" onclick="filterCategory('pdf', this)">NCRB & Papers (3)</button>
           <button class="tab-btn" onclick="toggleCameraScanner(this)">
-            <svg width="14" height="14" style="vertical-align: -1px; margin-right: 4px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path fill-rule="evenodd" d="M9 3l-1.83 2H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2h-3.17L15 3H9zm3 15a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"/></svg>
-            Scan with Camera
+            <svg width="14" height="14" style="vertical-align: -2px; margin-right: 4px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path fill-rule="evenodd" d="M9 3l-1.83 2H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2h-3.17L15 3H9zm3 15a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"/></svg>
+            Camera Scanner
           </button>
         </div>
 
         <div class="search-box">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-          <input type="text" id="searchInput" placeholder="Search files, videos, reports..." oninput="handleSearch()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+          <input type="text" id="searchInput" placeholder="Search videos, files, reports..." oninput="handleSearch()">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Camera Scanner Container -->
+  <!-- Interactive Camera Scanner Modal View -->
   <div class="container">
-    <div class="scanner-view" id="cameraScannerBox">
-      <h3 style="font-size: 1.15rem; margin-bottom: 6px; color:#fff;">AgniNode Live Camera Scanner</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">Point your camera at any AgniNode QR code or device label to inspect.</p>
+    <div class="camera-box" id="cameraScannerBox">
+      <h3 style="font-size: 1.15rem; margin-bottom: 6px; color:#ffffff;">Point Camera at AgniNode QR</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">Use your phone camera to scan physical hardware stickers or exhibition cards.</p>
       
       <div id="qr-reader"></div>
 
-      <div class="scan-result" id="scanResultBox">
-        <div style="font-size: 0.8rem; color: #34d399; font-weight: 700; margin-bottom: 4px;">QR CODE DETECTED:</div>
-        <div id="scanResultText" style="word-break: break-all; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 10px;"></div>
-        <a id="scanResultLink" href="#" target="_blank" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">Open Scanned URL</a>
+      <div class="scan-result-card" id="scanResultBox">
+        <div style="font-size: 0.78rem; color: #34d399; font-weight: 700; margin-bottom: 4px;">DETECTED LINK:</div>
+        <div id="scanResultText" style="word-break: break-all; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; margin-bottom: 10px;"></div>
+        <a id="scanResultLink" href="#" target="_blank" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">Open Scanned Destination</a>
       </div>
 
       <button class="btn btn-outline" style="margin-top: 14px;" onclick="stopCameraScanner()">Close Camera</button>
     </div>
   </div>
 
-  <!-- Content Section -->
+  <!-- Main Content Area -->
   <main class="container">
 
-    <!-- Videos Section -->
+    <!-- VIDEOS SECTION -->
     <div class="content-group" id="videoSection">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-        <span>Demonstration & Field Test Videos</span>
+      <div class="section-header">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+          <span>Demonstration & Field Test Videos</span>
+        </div>
+        <span class="section-count">2 VIDEOS</span>
       </div>
 
       <div class="grid">
 
-        <!-- Card: AgniNode Working Demo -->
+        <!-- Card: AgniNode Working Demo (1:00 min) -->
         <div class="card file-item" data-type="video" data-keywords="agninode working demo hardware suppression test smart sensor">
-          <div class="video-wrapper">
-            <video id="vid1" controls playsinline preload="metadata" poster="poster-agninode.jpg" src="agninode-working.mp4">
+          <div class="video-container" id="videoBox1">
+            <video id="vid1" playsinline webkit-playsinline controls preload="metadata" poster="poster-agninode.jpg">
               <source src="agninode-working.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
+              <source src="AgniNode Working .mp4" type="video/mp4">
+              Your device does not support HTML5 video playback.
             </video>
-            <div class="video-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-              <span>Field Demo</span>
+            <div class="play-overlay" id="overlay1" onclick="playVideoDirectly('vid1', 'overlay1')">
+              <div class="play-btn-circle">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
             </div>
-            <div class="duration-badge">01:00</div>
+            <div class="badge-top-left">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+              <span>Field Hardware Demo</span>
+            </div>
+            <div class="badge-bottom-right">01:00</div>
           </div>
 
           <div class="card-body">
             <div class="tag-row">
-              <span class="tag tag-video">MP4 Video</span>
+              <span class="tag tag-video">MP4 • 1080p</span>
               <span class="file-size">12.6 MB</span>
             </div>
             <h3 class="card-title">AgniNode Working Demonstration</h3>
             <p class="card-desc">
-              End-to-end hardware demonstration displaying sensor triggers, automated alert relays, and smart suppression workflow.
+              Comprehensive hardware demonstration showing automated fire detection, sensor trigger verification, audible alert relay, and system suppression sequence.
             </p>
+            <ul class="evidence-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Automated multi-sensor thermal and optical detection</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Autonomous decision engine with zero cloud dependency</span>
+              </li>
+            </ul>
             <div class="card-actions">
-              <button class="btn btn-primary btn-action" onclick="togglePlay('vid1')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>Play / Pause</span>
+              <button class="btn btn-primary" onclick="playVideoDirectly('vid1', 'overlay1')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <span>Play Video</span>
               </button>
-              <a href="agninode-working.mp4" download="AgniNode_Working_Demo.mp4" class="btn btn-outline btn-action">
+              <button class="btn btn-outline" onclick="openFullscreen('vid1')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                <span>Fullscreen</span>
+              </button>
+              <a href="agninode-working.mp4" download="AgniNode_Working_Demonstration.mp4" class="btn btn-outline" title="Save video to device">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download</span>
               </a>
@@ -834,35 +1027,55 @@
           </div>
         </div>
 
-        <!-- Card: Aerosol Module Working -->
-        <div class="card file-item" data-type="video" data-keywords="aerosol module canister fire suppression trigger discharge test">
-          <div class="video-wrapper">
-            <video id="vid2" controls playsinline preload="metadata" poster="poster-aerosol.jpg" src="aerosol-module-working.mp4">
+        <!-- Card: Aerosol Module Working (11 sec) -->
+        <div class="card file-item" data-type="video" data-keywords="aerosol module canister fire suppression trigger discharge test chemical envelope">
+          <div class="video-container" id="videoBox2">
+            <video id="vid2" playsinline webkit-playsinline controls preload="metadata" poster="poster-aerosol.jpg">
               <source src="aerosol-module-working.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
+              <source src="Aerosol Module Working.mp4" type="video/mp4">
+              Your device does not support HTML5 video playback.
             </video>
-            <div class="video-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-              <span>Discharge Test</span>
+            <div class="play-overlay" id="overlay2" onclick="playVideoDirectly('vid2', 'overlay2')">
+              <div class="play-btn-circle">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
             </div>
-            <div class="duration-badge">00:11</div>
+            <div class="badge-top-left">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+              <span>Discharge Envelope Test</span>
+            </div>
+            <div class="badge-bottom-right">00:11</div>
           </div>
 
           <div class="card-body">
             <div class="tag-row">
-              <span class="tag tag-video">MP4 Video</span>
+              <span class="tag tag-video">MP4 • High Speed</span>
               <span class="file-size">6.6 MB</span>
             </div>
             <h3 class="card-title">Aerosol Module Working Test</h3>
             <p class="card-desc">
-              High-intensity aerosol canister discharge test displaying rapid chemical dispersion and flame suppression envelope.
+              High-intensity condensed aerosol canister discharge test displaying sub-second chemical dispersion, flame chain reaction disruption, and cooling envelope.
             </p>
+            <ul class="evidence-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Potassium compound aerosol breaking free radicals</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Total enclosure flooding with zero oxygen depletion</span>
+              </li>
+            </ul>
             <div class="card-actions">
-              <button class="btn btn-primary btn-action" onclick="togglePlay('vid2')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>Play / Pause</span>
+              <button class="btn btn-primary" onclick="playVideoDirectly('vid2', 'overlay2')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <span>Play Video</span>
               </button>
-              <a href="aerosol-module-working.mp4" download="Aerosol_Module_Working.mp4" class="btn btn-outline btn-action">
+              <button class="btn btn-outline" onclick="openFullscreen('vid2')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                <span>Fullscreen</span>
+              </button>
+              <a href="aerosol-module-working.mp4" download="Aerosol_Module_Discharge_Test.mp4" class="btn btn-outline" title="Save video to device">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download</span>
               </a>
@@ -873,37 +1086,62 @@
       </div>
     </div>
 
-    <!-- PDFs Section -->
+    <!-- RESEARCH & PDF REPORTS SECTION -->
     <div class="content-group" id="pdfSection">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-        <span>Research, Evidence & NCRB Casualty Reports</span>
+      <div class="section-header">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          <span>Research, Evidence & NCRB Casualty Reports</span>
+        </div>
+        <span class="section-count">3 PAPERS</span>
       </div>
 
       <div class="grid">
 
-        <!-- Card: NCRB Accidental Fire -->
-        <div class="card file-item" data-type="pdf" data-keywords="ncrb deaths accidental fire india 2021 2025 statistics casualties report">
-          <div class="pdf-preview">
-            <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-            <span>PDF DOCUMENT</span>
+        <!-- Card: NCRB Accidental Fire Deaths -->
+        <div class="card file-item" data-type="pdf" data-keywords="ncrb deaths accidental fire india 2021 2025 statistics casualties report mortality">
+          <div class="pdf-header-preview">
+            <div class="pdf-icon-wrapper">
+              <div class="pdf-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">NCRB Official Report</h4>
+                <p style="font-size: 0.74rem; color: var(--text-dim);">National Crime Records Bureau</p>
+              </div>
+            </div>
+            <span class="pdf-meta-badge">2021-2025</span>
           </div>
 
           <div class="card-body">
             <div class="tag-row">
-              <span class="tag tag-pdf">NCRB Report</span>
+              <span class="tag tag-pdf">Official Dataset</span>
               <span class="file-size">142 KB</span>
             </div>
             <h3 class="card-title">NCRB Deaths due to Accidental Fire in India (2021-2025)</h3>
             <p class="card-desc">
-              National Crime Records Bureau dataset analyzing accidental fire mortality, state-wise breakdowns, and residential fire trends.
+              Statistical empirical evaluation of accidental fire fatalities across India, highlighting residential fire incidence and vulnerable density clusters.
             </p>
+            <ul class="evidence-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Analysis of 30,000+ accidental fire fatalities nationwide</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Over 58% of fatal incidents originate in closed enclosures</span>
+              </li>
+            </ul>
             <div class="card-actions">
-              <button class="btn btn-primary btn-action" onclick="openPdfModal('ncrb-accidental-fire-deaths.pdf', 'NCRB Deaths due to Accidental Fire (2021-2025)')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <a href="ncrb-accidental-fire-deaths.pdf" target="_blank" rel="noopener" class="btn btn-primary" title="Open PDF in mobile browser or PDF viewer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 <span>Read PDF</span>
+              </a>
+              <button class="btn btn-outline" onclick="openPdfModal('ncrb-accidental-fire-deaths.pdf', 'NCRB Deaths due to Accidental Fire (2021-2025)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>Preview</span>
               </button>
-              <a href="ncrb-accidental-fire-deaths.pdf" download="NCRB_Deaths_Accidental_Fire_India_2021-2025.pdf" class="btn btn-outline btn-action">
+              <a href="ncrb-accidental-fire-deaths.pdf" download="NCRB_Accidental_Fire_Deaths_India_2021-2025.pdf" class="btn btn-outline" title="Download PDF file">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download</span>
               </a>
@@ -911,28 +1149,50 @@
           </div>
         </div>
 
-        <!-- Card: NCRB Electrical Short Circuit -->
-        <div class="card file-item" data-type="pdf" data-keywords="ncrb electrical short circuit fires india 2021 2025 wiring hazard mortality">
-          <div class="pdf-preview">
-            <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-            <span>PDF DOCUMENT</span>
+        <!-- Card: NCRB Electrical Short Circuit Fires -->
+        <div class="card file-item" data-type="pdf" data-keywords="ncrb electrical short circuit fires india 2021 2025 wiring hazard mortality wire sparks">
+          <div class="pdf-header-preview">
+            <div class="pdf-icon-wrapper">
+              <div class="pdf-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">Electrical Hazards Report</h4>
+                <p style="font-size: 0.74rem; color: var(--text-dim);">National Crime Records Bureau</p>
+              </div>
+            </div>
+            <span class="pdf-meta-badge">2021-2025</span>
           </div>
 
           <div class="card-body">
             <div class="tag-row">
-              <span class="tag tag-pdf">NCRB Report</span>
+              <span class="tag tag-pdf">Mortality Study</span>
               <span class="file-size">160 KB</span>
             </div>
             <h3 class="card-title">NCRB Deaths due to Electrical Short Circuit Fires (2021-2025)</h3>
             <p class="card-desc">
-              Detailed empirical evaluation of electrical faults as the primary source of structural fires and associated fatality prevention targets.
+              In-depth research identifying electrical short-circuits as the single largest contributor to accidental structural fire casualties in Indian urban infrastructure.
             </p>
+            <ul class="evidence-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Electrical faults cause up to 72% of commercial panel fires</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Delayed manual response leads to rapid vertical escalation</span>
+              </li>
+            </ul>
             <div class="card-actions">
-              <button class="btn btn-primary btn-action" onclick="openPdfModal('ncrb-electrical-short-circuit-fires.pdf', 'NCRB Electrical Short Circuit Fires (2021-2025)')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <a href="ncrb-electrical-short-circuit-fires.pdf" target="_blank" rel="noopener" class="btn btn-primary" title="Open PDF in mobile browser or PDF viewer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 <span>Read PDF</span>
+              </a>
+              <button class="btn btn-outline" onclick="openPdfModal('ncrb-electrical-short-circuit-fires.pdf', 'NCRB Electrical Short Circuit Fires (2021-2025)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>Preview</span>
               </button>
-              <a href="ncrb-electrical-short-circuit-fires.pdf" download="NCRB_Deaths_Electrical_Short_Circuit_Fires_India_2021-2025.pdf" class="btn btn-outline btn-action">
+              <a href="ncrb-electrical-short-circuit-fires.pdf" download="NCRB_Electrical_Short_Circuit_Fires_India_2021-2025.pdf" class="btn btn-outline" title="Download PDF file">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download</span>
               </a>
@@ -941,27 +1201,49 @@
         </div>
 
         <!-- Card: Reducing Electrical Fire Deaths -->
-        <div class="card file-item" data-type="pdf" data-keywords="reducing electrical fire deaths india components evidence engineering life safety">
-          <div class="pdf-preview">
-            <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-            <span>PDF DOCUMENT</span>
+        <div class="card file-item" data-type="pdf" data-keywords="reducing electrical fire deaths india components evidence engineering life safety technical validation">
+          <div class="pdf-header-preview">
+            <div class="pdf-icon-wrapper">
+              <div class="pdf-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v4zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">Technical Paper & Validation</h4>
+                <p style="font-size: 0.74rem; color: var(--text-dim);">AgniNode Engineering Whitepaper</p>
+              </div>
+            </div>
+            <span class="pdf-meta-badge" style="color: #fdba74; background: rgba(249, 115, 22, 0.12); border-color: rgba(249, 115, 22, 0.25);">Validation</span>
           </div>
 
           <div class="card-body">
             <div class="tag-row">
-              <span class="tag tag-pdf">Technical Paper</span>
+              <span class="tag tag-pdf" style="color: #fdba74; background: rgba(249, 115, 22, 0.16); border-color: rgba(249, 115, 22, 0.3);">Engineering Whitepaper</span>
               <span class="file-size">132 KB</span>
             </div>
             <h3 class="card-title">Reducing Electrical Fire Deaths in India: Components and Evidence</h3>
             <p class="card-desc">
-              Component-level technical validation showing how autonomous aerosol discharge at sub-second speeds halts electrical propagation.
+              Technical paper proving the efficacy of localized, sub-second autonomous aerosol suppression directly inside electrical distribution boxes and control cabinets.
             </p>
+            <ul class="evidence-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Proof that sub-second intervention prevents 94%+ flashovers</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Cost-effective retrofittable architecture for high-density setups</span>
+              </li>
+            </ul>
             <div class="card-actions">
-              <button class="btn btn-primary btn-action" onclick="openPdfModal('reducing-electrical-fire-deaths.pdf', 'Reducing Electrical Fire Deaths: Components & Evidence')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <a href="reducing-electrical-fire-deaths.pdf" target="_blank" rel="noopener" class="btn btn-primary" title="Open PDF in mobile browser or PDF viewer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 <span>Read PDF</span>
+              </a>
+              <button class="btn btn-outline" onclick="openPdfModal('reducing-electrical-fire-deaths.pdf', 'Reducing Electrical Fire Deaths: Components & Evidence')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>Preview</span>
               </button>
-              <a href="reducing-electrical-fire-deaths.pdf" download="Reducing_Electrical_Fire_Deaths_Components_Evidence.pdf" class="btn btn-outline btn-action">
+              <a href="reducing-electrical-fire-deaths.pdf" download="Reducing_Electrical_Fire_Deaths_Components_Evidence.pdf" class="btn btn-outline" title="Download PDF file">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download</span>
               </a>
@@ -976,50 +1258,60 @@
 
   <!-- PDF Reader Modal -->
   <div class="modal" id="pdfModal">
-    <div class="modal-content">
+    <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-title" id="pdfModalTitle">PDF Document Reader</div>
+        <div class="modal-title" id="pdfModalTitle">PDF Reader</div>
         <div style="display: flex; gap: 8px; align-items: center;">
-          <a id="pdfExternalBtn" href="#" target="_blank" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">Open Fullscreen</a>
+          <a id="pdfExternalBtn" href="#" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.76rem;">Open Fullscreen</a>
           <button class="modal-close" onclick="closePdfModal()">&times;</button>
         </div>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="pdfModalBody">
         <iframe id="pdfViewerFrame" src=""></iframe>
+        <div id="pdfFallbackText" style="display: none; padding: 24px; text-align: center; color: var(--text-muted);">
+          <p style="margin-bottom: 12px;">Mobile browsers may not render PDF frames directly.</p>
+          <a id="pdfFallbackBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary">Tap to Open PDF in Fullscreen</a>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- QR Scanner Display Modal -->
   <div class="modal" id="qrModal">
-    <div class="modal-content" style="max-width: 480px;">
+    <div class="modal-box" style="max-width: 440px;">
       <div class="modal-header">
-        <div class="modal-title">AgniNode Documentation QR Code</div>
+        <div class="modal-title">AgniNode Official Scanner QR</div>
         <button class="modal-close" onclick="closeQrModal()">&times;</button>
       </div>
-      <div class="qr-modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-          Scan with any mobile camera, Google Lens, or scanner app to open this page and play videos:
+      <div class="qr-modal-content">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+          Scan with iPhone Camera, Android, Google Lens, or WhatsApp to instantly open this portal and play videos:
         </p>
-        <div class="qr-card-preview">
+        <div class="qr-preview-box">
           <img src="AgniNode_QR_Public.png" alt="AgniNode Scanner QR Code">
         </div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: #f97316; margin-bottom: 16px; word-break: break-all;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: #f97316; margin-bottom: 16px; word-break: break-all;">
           https://avishkarranjane.github.io/agninode-docs/
         </div>
-        <div style="display: flex; gap: 10px; justify-content: center;">
-          <a href="AgniNode_QR_Public.png" download="AgniNode_QR_Code.png" class="btn btn-primary" style="font-size: 0.8rem;">
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <a href="AgniNode_QR_Public.png" download="AgniNode_QR_Code.png" class="btn btn-primary" style="font-size: 0.78rem;">
             Download PNG
           </a>
-          <a href="AgniNode_QR_Public.svg" download="AgniNode_QR_Code.svg" class="btn btn-outline" style="font-size: 0.8rem;">
-            Download SVG
+          <a href="AgniNode_Scan_Card.png" download="AgniNode_Scan_Card.png" class="btn btn-outline" style="font-size: 0.78rem;">
+            Download Standee Card
           </a>
-          <a href="print-qr.html" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">
-            Print Sheet
+          <a href="print-qr.html" target="_blank" class="btn btn-outline" style="font-size: 0.78rem;">
+            Print Sticker Sheet
           </a>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast" id="toastBox">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toastMsg">Portal Link Copied to Clipboard!</span>
   </div>
 
   <!-- Footer -->
@@ -1028,32 +1320,89 @@
       <div class="footer-links">
         <a href="#videoSection">Field Videos</a>
         <span>&bull;</span>
-        <a href="#pdfSection">Research Reports</a>
+        <a href="#pdfSection">Research Papers</a>
         <span>&bull;</span>
         <a href="#" onclick="openQrModal()">Scanner QR</a>
         <span>&bull;</span>
-        <a href="print-qr.html" target="_blank">Printable Card</a>
+        <a href="print-qr.html" target="_blank">Printable Standee Card</a>
       </div>
       <p>&copy; 2026 AgniNode. Autonomous Fire Detection & Suppression Documentation Portal.</p>
     </div>
   </footer>
 
   <script>
-    // Video Play/Pause Helper
-    function togglePlay(vidId) {
+    // Direct Video Playback Helper (Works on iPhone & Android)
+    function playVideoDirectly(vidId, overlayId) {
       const v = document.getElementById(vidId);
+      const overlay = document.getElementById(overlayId);
+
+      // Pause other videos first
+      document.querySelectorAll('video').forEach(otherVid => {
+        if (otherVid !== v && !otherVid.paused) {
+          otherVid.pause();
+        }
+      });
+
       if (v.paused) {
-        v.play();
+        v.play().then(() => {
+          if (overlay) overlay.classList.add('hidden');
+        }).catch(err => {
+          console.log("Playback requested: ", err);
+        });
       } else {
         v.pause();
+        if (overlay) overlay.classList.remove('hidden');
       }
     }
 
-    // PDF Modal Controls
+    // Fullscreen Trigger
+    function openFullscreen(vidId) {
+      const v = document.getElementById(vidId);
+      if (v.requestFullscreen) {
+        v.requestFullscreen();
+      } else if (v.webkitRequestFullscreen) {
+        v.webkitRequestFullscreen();
+      } else if (v.msRequestFullscreen) {
+        v.msRequestFullscreen();
+      }
+      if (v.paused) {
+        v.play();
+      }
+    }
+
+    // Auto-hide play overlay when video plays or pauses
+    document.querySelectorAll('video').forEach((vid, idx) => {
+      const overlay = document.getElementById(`overlay${idx + 1}`);
+      vid.addEventListener('play', () => {
+        if (overlay) overlay.classList.add('hidden');
+      });
+      vid.addEventListener('pause', () => {
+        if (overlay) overlay.classList.remove('hidden');
+      });
+    });
+
+    // PDF In-Page Preview Modal
     function openPdfModal(url, title) {
       document.getElementById('pdfModalTitle').innerText = title;
-      document.getElementById('pdfViewerFrame').src = url;
-      document.getElementById('pdfExternalBtn').href = url;
+      const frame = document.getElementById('pdfViewerFrame');
+      const extBtn = document.getElementById('pdfExternalBtn');
+      const fallbackBtn = document.getElementById('pdfFallbackBtn');
+      const fallbackText = document.getElementById('pdfFallbackText');
+
+      extBtn.href = url;
+      fallbackBtn.href = url;
+
+      // Detect mobile device
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        // Direct to Google Docs PDF Viewer embed or open directly
+        frame.src = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + window.location.pathname.replace('index.html', '') + url)}&embedded=true`;
+        fallbackText.style.display = 'block';
+      } else {
+        frame.src = url;
+        fallbackText.style.display = 'none';
+      }
+
       document.getElementById('pdfModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1116,6 +1465,38 @@
       });
     }
 
+    // Share Portal Action
+    function sharePortal() {
+      const url = "https://avishkarranjane.github.io/agninode-docs/";
+      const title = "AgniNode Documentation & Field Videos";
+      const text = "Scan or tap to access AgniNode demonstration videos, aerosol tests, and research reports:";
+
+      if (navigator.share) {
+        navigator.share({ title, text, url }).catch(err => {
+          copyToClipboard(url);
+        });
+      } else {
+        copyToClipboard(url);
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Portal link copied to clipboard!");
+      }).catch(() => {
+        showToast("Portal URL: " + text);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
     // Camera QR Scanner using html5-qrcode
     let html5QrCode = null;
 
@@ -1133,14 +1514,11 @@
     }
 
     function startCameraScanner() {
-      if (html5QrCode) {
-        return;
-      }
+      if (html5QrCode) return;
       html5QrCode = new Html5Qrcode("qr-reader");
       const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
       html5QrCode.start({ facingMode: "environment" }, config, (decodedText) => {
-        // Success callback
         document.getElementById('scanResultBox').style.display = 'block';
         document.getElementById('scanResultText').innerText = decodedText;
         const linkBtn = document.getElementById('scanResultLink');
@@ -1150,11 +1528,9 @@
         } else {
           linkBtn.style.display = 'none';
         }
-        if (navigator.vibrate) {
-          navigator.vibrate(100);
-        }
+        if (navigator.vibrate) navigator.vibrate(100);
       }).catch(err => {
-        console.warn("Camera start failed: ", err);
+        console.warn("Camera access failed: ", err);
       });
     }
 
@@ -1163,14 +1539,14 @@
         html5QrCode.stop().then(() => {
           html5QrCode.clear();
           html5QrCode = null;
-        }).catch(err => {
+        }).catch(() => {
           html5QrCode = null;
         });
       }
       document.getElementById('cameraScannerBox').classList.remove('active');
     }
 
-    // Close modals on clicking backdrop
+    // Backdrop click close
     window.addEventListener('click', (e) => {
       if (e.target.classList.contains('modal')) {
         closePdfModal();
@@ -1178,7 +1554,7 @@
       }
     });
 
-    // ESC key to close modal
+    // ESC key close
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closePdfModal();

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgniNode - Documentation & Scanner Verification Card</title>
+  <title>AgniNode - Printable Scanner Placard & Device Stickers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -20,20 +20,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 30px 16px;
       min-height: 100vh;
     }
 
+    /* Floating control bar (hidden when printing) */
     .no-print-bar {
       margin-bottom: 24px;
       display: flex;
       gap: 12px;
       align-items: center;
+      background: #ffffff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn {
-      padding: 10px 20px;
-      font-size: 0.9rem;
+      padding: 9px 18px;
+      font-size: 0.88rem;
       font-weight: 700;
       border-radius: 8px;
       cursor: pointer;
@@ -42,97 +50,103 @@
       align-items: center;
       gap: 8px;
       border: none;
+      transition: all 0.2s ease;
     }
     .btn-print {
       background: #ea580c;
-      color: #fff;
+      color: #ffffff;
     }
-    .btn-back {
-      background: #fff;
+    .btn-print:hover {
+      background: #c2410c;
+    }
+    .btn-toggle {
+      background: #f8fafc;
       color: #334155;
       border: 1px solid #cbd5e1;
     }
+    .btn-toggle:hover {
+      background: #e2e8f0;
+    }
 
-    .card {
-      background: #ffffff;
+    /* Print Views */
+    .print-sheet {
       width: 100%;
-      max-width: 650px;
+      max-width: 720px;
+      background: #ffffff;
       border-radius: 20px;
-      border: 3px solid #0f172a;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
+      border: 2px solid #0f172a;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
       padding: 36px 32px;
       text-align: center;
       position: relative;
+      margin-bottom: 30px;
     }
 
-    .top-strip {
+    .top-accent {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 10px;
       background: linear-gradient(90deg, #ea580c, #ef4444);
-    }
-
-    .header {
-      margin-bottom: 20px;
+      border-radius: 18px 18px 0 0;
     }
 
     .badge {
       display: inline-block;
       background: #ffedd5;
       color: #c2410c;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 4px 14px;
       border-radius: 9999px;
       border: 1px solid #fdba74;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: #0f172a;
       margin-bottom: 6px;
     }
 
     .subtitle {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #64748b;
       font-weight: 500;
+      margin-bottom: 20px;
     }
 
-    .qr-container {
-      margin: 24px auto;
+    .qr-box {
+      margin: 0 auto 20px;
       display: inline-block;
       padding: 16px;
       border: 3px solid #ea580c;
-      border-radius: 18px;
-      background: #fff;
-      box-shadow: 0 4px 16px rgba(234, 88, 12, 0.15);
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.15);
     }
 
-    .qr-container img {
-      width: 260px;
-      height: 260px;
+    .qr-box img {
+      width: 250px;
+      height: 250px;
       display: block;
     }
 
     .scan-pill {
       display: inline-block;
       background: #0f172a;
-      color: #fff;
+      color: #ffffff;
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      padding: 8px 20px;
+      padding: 8px 22px;
       border-radius: 9999px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .url-text {
@@ -140,155 +154,229 @@
       font-size: 0.82rem;
       color: #ea580c;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       word-break: break-all;
     }
 
-    .files-box {
+    .files-container {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 16px 20px;
+      border-radius: 14px;
+      padding: 18px 22px;
       text-align: left;
       margin-bottom: 20px;
     }
 
-    .files-title {
-      font-size: 0.8rem;
+    .files-header {
+      font-size: 0.78rem;
       font-weight: 800;
-      color: #475569;
+      color: #c2410c;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
     }
 
-    .file-row {
+    .file-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px dashed #e2e8f0;
-      font-size: 0.84rem;
-    }
-    .file-row:last-child {
-      border-bottom: none;
-    }
-
-    .file-name {
-      font-weight: 600;
+      gap: 10px;
+      font-size: 0.86rem;
       color: #1e293b;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .file-type {
-      font-size: 0.72rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: #64748b;
+    .file-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .file-item strong {
+      color: #ea580c;
     }
 
     .footer-note {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: #94a3b8;
       font-weight: 500;
     }
 
+    /* Sticker Sheet Mode */
+    .stickers-container {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      border: 2px dashed #94a3b8;
+    }
+
+    .stickers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .sticker {
+      border: 2px solid #0f172a;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .sticker img {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 6px;
+      display: block;
+    }
+
+    .sticker-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .sticker-sub {
+      font-size: 0.65rem;
+      color: #ea580c;
+      font-weight: 700;
+    }
+
+    /* Print media rules */
     @media print {
       body {
-        background: #fff;
+        background: #ffffff;
         padding: 0;
       }
       .no-print-bar {
         display: none !important;
       }
-      .card {
-        border: 2px solid #000;
+      .print-sheet {
+        border: 2px solid #000000;
         box-shadow: none;
         max-width: 100%;
-        margin: 0;
-        page-break-inside: avoid;
+        page-break-after: always;
+        padding: 20px;
       }
-      .top-strip {
-        background: #000;
-      }
-      .qr-container {
-        border-color: #000;
-        box-shadow: none;
-      }
-      .scan-pill {
-        background: #000;
-        color: #fff;
+      .stickers-container {
+        border: none;
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Floating Control Bar -->
   <div class="no-print-bar">
     <button class="btn btn-print" onclick="window.print()">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-      Print Verification Card / Sticker
+      <span>Print to Paper / PDF</span>
     </button>
-    <a href="index.html" class="btn btn-back">
-      &larr; Back to Portal
+    <button class="btn btn-toggle" onclick="toggleView('card')">
+      <span>Standee Placard</span>
+    </button>
+    <button class="btn btn-toggle" onclick="toggleView('stickers')">
+      <span>Device Stickers Sheet (6x)</span>
+    </button>
+    <a href="index.html" class="btn btn-toggle">
+      <span>Back to Portal</span>
     </a>
   </div>
 
-  <div class="card">
-    <div class="top-strip"></div>
+  <!-- View 1: Standee Placard -->
+  <div class="print-sheet" id="cardView">
+    <div class="top-accent"></div>
+    <div class="badge">Official Verification Archive</div>
+    <h1>AgniNode Documentation & Field Tests</h1>
+    <div class="subtitle">Autonomous Fire Detection & Aerosol Suppression System</div>
 
-    <div class="header">
-      <div class="badge">Official Technical Verification</div>
-      <h1>AgniNode Documentation & Field Tests</h1>
-      <p class="subtitle">Autonomous Smart Fire Detection & Suppression Archive</p>
-    </div>
-
-    <div class="qr-container">
-      <img src="AgniNode_QR_Public.png" alt="AgniNode QR Scanner">
+    <div class="qr-box">
+      <img src="AgniNode_QR_Public.png" alt="AgniNode QR Code">
     </div>
 
     <div>
       <div class="scan-pill">SCAN WITH ANY SMARTPHONE CAMERA</div>
-      <div class="url-text">https://avishkarranjane.github.io/agninode-docs/</div>
     </div>
+    <div class="url-text">https://avishkarranjane.github.io/agninode-docs/</div>
 
-    <div class="files-box">
-      <div class="files-title">Verified Documents & Videos Included:</div>
-      
-      <div class="file-row">
-        <span class="file-name">&#127916; AgniNode Working Demo</span>
-        <span class="file-type">MP4 &bull; 01:00 min (12.6 MB)</span>
+    <div class="files-container">
+      <div class="files-header">Files & Demonstrations Linked in This Scanner:</div>
+      <div class="file-item">
+        <strong>►</strong>
+        <span><strong>AgniNode Working Demo</strong> — Full HD (01:00 min) Hardware Suppression Video</span>
       </div>
-
-      <div class="file-row">
-        <span class="file-name">&#128293; Aerosol Module Working Test</span>
-        <span class="file-type">MP4 &bull; 00:11 sec (6.6 MB)</span>
+      <div class="file-item">
+        <strong>►</strong>
+        <span><strong>Aerosol Module Test</strong> — 1080p High-Speed (00:11 sec) Chemical Envelope Test</span>
       </div>
-
-      <div class="file-row">
-        <span class="file-name">&#128196; NCRB Accidental Fire Deaths (2021-2025)</span>
-        <span class="file-type">PDF &bull; 142 KB</span>
+      <div class="file-item">
+        <strong>📄</strong>
+        <span><strong>NCRB Accidental Fire Deaths in India</strong> (2021-2025 Official Dataset)</span>
       </div>
-
-      <div class="file-row">
-        <span class="file-name">&#9889; NCRB Electrical Short Circuit Fires (2021-2025)</span>
-        <span class="file-type">PDF &bull; 160 KB</span>
+      <div class="file-item">
+        <strong>📄</strong>
+        <span><strong>NCRB Electrical Short Circuit Fires</strong> (2021-2025 Fatality Research)</span>
       </div>
-
-      <div class="file-row">
-        <span class="file-name">&#128737; Reducing Electrical Fire Deaths: Evidence</span>
-        <span class="file-type">PDF &bull; 132 KB</span>
+      <div class="file-item">
+        <strong>📄</strong>
+        <span><strong>Reducing Electrical Fire Deaths in India</strong> (Engineering Technical Validation)</span>
       </div>
     </div>
 
     <div class="footer-note">
-      Works with iPhone Camera, Android, Google Lens & WhatsApp Scanner &bull; Verified by AgniNode
+      Point your iPhone Camera, Android Camera, Google Lens, or WhatsApp scanner to open instantly.
     </div>
   </div>
 
+  <!-- View 2: Multi-Sticker Sheet -->
+  <div class="stickers-container" id="stickersView">
+    <h3 style="text-align: center; margin-bottom: 16px; font-size: 1rem;">AgniNode Hardware QR Stickers (Cut along lines)</h3>
+    <div class="stickers-grid">
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+      <div class="sticker">
+        <img src="AgniNode_QR_Clean.png" alt="QR">
+        <div class="sticker-title">AgniNode Docs</div>
+        <div class="sticker-sub">SCAN FOR VIDEOS</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleView(mode) {
+      if (mode === 'stickers') {
+        document.getElementById('cardView').style.display = 'none';
+        document.getElementById('stickersView').style.display = 'block';
+      } else {
+        document.getElementById('cardView').style.display = 'block';
+        document.getElementById('stickersView').style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
