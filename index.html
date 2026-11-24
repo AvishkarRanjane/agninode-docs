@@ -114,25 +114,16 @@
     }
 
     .video-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      justify-content: space-between;
+      padding: 14px 16px;
+      text-align: center;
       background: #0f1523;
     }
 
     .video-name {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #ffffff;
-      line-height: 1.3;
-    }
-
-    .video-actions {
-      display: flex;
-      gap: 8px;
+      line-height: 1.35;
     }
 
     /* Buttons */
@@ -316,38 +307,26 @@
       <!-- Video 1 -->
       <div class="video-card">
         <div class="video-wrapper">
-          <video controls playsinline preload="metadata" poster="poster-agninode.jpg">
+          <video controls playsinline preload="metadata" poster="poster-agninode.jpg" controlslist="nodownload">
             <source src="agninode-working.mp4" type="video/mp4">
             <source src="AgniNode Working .mp4" type="video/mp4">
           </video>
         </div>
         <div class="video-body">
           <h3 class="video-name">AgniNode Working Demonstration</h3>
-          <div class="video-actions">
-            <a href="agninode-working.mp4" download="AgniNode_Working_Demonstration.mp4" class="btn btn-outline">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Download Video</span>
-            </a>
-          </div>
         </div>
       </div>
 
       <!-- Video 2 -->
       <div class="video-card">
         <div class="video-wrapper">
-          <video controls playsinline preload="metadata" poster="poster-aerosol.jpg">
+          <video controls playsinline preload="metadata" poster="poster-aerosol.jpg" controlslist="nodownload">
             <source src="aerosol-module-working.mp4" type="video/mp4">
             <source src="Aerosol Module Working.mp4" type="video/mp4">
           </video>
         </div>
         <div class="video-body">
           <h3 class="video-name">Aerosol Module Working Test</h3>
-          <div class="video-actions">
-            <a href="aerosol-module-working.mp4" download="Aerosol_Module_Working.mp4" class="btn btn-outline">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Download Video</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>
